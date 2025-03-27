@@ -1,0 +1,13 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.boton-centrado {
+    .boton {
+        width: 100%;
+        margin: 1.2rem 0;
+
+        @include m.desktop {
+            width: 100%;
+        }
+    }
+}
