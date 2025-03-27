@@ -3,8 +3,8 @@
         <div class="imagen"></div>
 
         <!-- Formulario a la derecha -->
-        <div class="formulario-contenedor">
-            <h1>TaskFlow</h1>
+        <div class="formulario-contenedor login">
+            <h1 class="taskflow">TaskFlow</h1>
             <p class="tagline">Transforma tus pendientes en acciones</p>
 
             <div class="contenedor-sm">
