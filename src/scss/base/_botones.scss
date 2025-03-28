@@ -2,12 +2,10 @@
 @use 'mixins' as m;
 
 .boton-centrado {
+    display: flex;
+    justify-content: center; // Centra el botón si es más pequeño
+    width: 100%;
     .boton {
-        width: 100%;
         margin: 1.2rem 0;
-
-        @include m.desktop {
-            width: 100%;
-        }
     }
 }

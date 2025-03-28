@@ -7,4 +7,8 @@
         color: transparent;
         background-clip: text;
     }
+
+    input[type="submit"] {
+        @include m.boton(v.$cyan, v.$blanco)
+    }
 }
