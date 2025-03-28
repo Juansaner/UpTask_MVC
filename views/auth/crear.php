@@ -7,7 +7,7 @@
             <?php include_once __DIR__ . "/../templates/nombre-sitio.php"; ?>
             <div class="contenedor-sm">
                 <p class="descripcion-pagina">Crear cuenta</p>
-                <form method="POST" action="/" class="formulario">
+                <form method="POST" action="/crear" class="formulario">
                 <div class="campo">
                         <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" placeholder="Ingrese su nombre completo" name="nombre">
@@ -25,7 +25,7 @@
                         <input type="password" id="password2" placeholder="Repita su contraseña" name="password2">
                     </div>
                     <div class="boton-centrado">
-                        <input type="submit" class="boton" value="Iniciar sesión">
+                        <input type="submit" class="boton" value="Crear cuenta">
                     </div>
                 </form>
                 <div class="acciones">
