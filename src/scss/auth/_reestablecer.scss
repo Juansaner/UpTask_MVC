@@ -1,0 +1,12 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.reestablecer {
+    .taskflow {
+        @include m.textoDegradado(v.$azul)
+    }
+
+    input[type="submit"] {
+        @include m.boton(v.$azul, v.$blanco)
+    }
+}
