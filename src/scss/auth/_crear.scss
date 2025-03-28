@@ -1,0 +1,12 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.crear {
+    .taskflow {
+        @include m.textoDegradado(v.$morado)
+    }
+
+    input[type="submit"] {
+        @include m.boton(v.$morado, v.$blanco)
+    }
+}
