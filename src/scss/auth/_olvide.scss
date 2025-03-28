@@ -1,0 +1,12 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.olvide {
+    .taskflow {
+        @include m.textoDegradado(v.$rosa)
+    }
+
+    input[type="submit"] {
+        @include m.boton(v.$rosa, v.$blanco)
+    }
+}

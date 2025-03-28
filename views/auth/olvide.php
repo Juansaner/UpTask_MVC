@@ -6,19 +6,19 @@
         <div class="formulario-contenedor olvide">
             <?php include_once __DIR__ . "/../templates/nombre-sitio.php"; ?>
             <div class="contenedor-sm">
-                <p class="descripcion-pagina">Crear cuenta</p>
-                <form method="POST" action="/" class="formulario">
+                <p class="descripcion-pagina">Recupera tu acceso TaskFlow</p>
+                <form method="POST" action="/olvide" class="formulario">
                     <div class="campo">
                         <label for="email">Correo</label>
                         <input type="email" id="email" placeholder="Ingrese su correo electrónico" name="email">
                     </div>
                     <div class="boton-centrado">
-                        <input type="submit" class="boton" value="Iniciar sesión">
+                        <input type="submit" class="boton" value="Enviar instrucciones">
                     </div>
                 </form>
                 <div class="acciones">
-                    <a href="/crear">¿Ya tienes cuenta? <span>Iniciar sesión</span></a>
-                    <a href="/olvide">¿Olvidaste tu contraseña?</a>
+                    <a href="/">¿Ya tienes cuenta? <span>Iniciar sesión</span></a>
+                    <a href="/crear">¿Aún no tienes una cuenta? <span>Crear una</span></a>
                 </div>
             </div><!-- .contenedor-sm -->
         </div><!-- .formulario-contenedor -->
