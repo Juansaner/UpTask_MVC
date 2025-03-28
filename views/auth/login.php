@@ -4,9 +4,7 @@
 
         <!-- Formulario a la derecha -->
         <div class="formulario-contenedor login">
-            <h1 class="taskflow">TaskFlow</h1>
-            <p class="tagline">Transforma tus pendientes en acciones</p>
-
+            <?php include_once __DIR__ . "/../templates/nombre-sitio.php"; ?>
             <div class="contenedor-sm">
                 <p class="descripcion-pagina">Iniciar sesión</p>
                 <form method="POST" action="/" class="formulario">
