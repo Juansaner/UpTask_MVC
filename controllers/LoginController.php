@@ -19,7 +19,7 @@ class LoginController {
     }
 
     public static function crear(Router $router) {
-
+        
         if($_SERVER['REQUEST_METHOD']) {
 
         }
