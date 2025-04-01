@@ -7,6 +7,7 @@
             <?php include_once __DIR__ . "/../templates/nombre-sitio.php"; ?>
             <div class="contenedor-sm">
                 <p class="descripcion-pagina">Crear cuenta</p>
+                <?php include_once __DIR__ . "/../templates/alertas.php"; ?>
                 <form method="POST" action="/crear" class="formulario">
                 <div class="campo">
                         <label for="nombre">Nombre</label>
@@ -29,7 +30,7 @@
                     </div>
                 </form>
                 <div class="acciones">
-                    <a href="/crear">¿Ya tienes cuenta? <span>Iniciar sesión</span></a>
+                    <a href="/">¿Ya tienes cuenta? <span>Iniciar sesión</span></a>
                     <a href="/olvide">¿Olvidaste tu contraseña?</a>
                 </div>
             </div><!-- .contenedor-sm -->

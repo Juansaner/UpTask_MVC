@@ -18,23 +18,23 @@ class Usuario extends ActiveRecord {
 
     public function validarNuevaCuenta() {
         if(!$this->nombre) {
-            self::$alertas['error'] = 'El nombre de usuario es obligatorio';
+            self::$alertas['error'][] = 'El nombre de usuario es obligatorio';
         }
 
         if(!$this->email) {
-            self::$alertas['error'] = 'El correo es obligatorio';
+            self::$alertas['error'][] = 'El correo es obligatorio';
         }
 
         if(!$this->password) {
-            self::$alertas['error'] = 'La contraseña es obligatoria';
+            self::$alertas['error'][] = 'La contraseña es obligatoria';
         }
 
         if(strlen($this->password) < 6){
-            self::$alertas['error'] = 'La contraseña de tener al menos 6 caracteres';
+            self::$alertas['error'][] = 'La contraseña de tener al menos 6 caracteres';
         }
 
         if($this->password !== $this->password2) {
-            self::$alertas['error'] = 'Las contraseñas no coinciden';
+            self::$alertas['error'][] = 'Las contraseñas no coinciden';
         }
         return self::$alertas;
     }
