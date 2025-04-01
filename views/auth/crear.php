@@ -10,11 +10,11 @@
                 <form method="POST" action="/crear" class="formulario">
                 <div class="campo">
                         <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" placeholder="Ingrese su nombre completo" name="nombre">
+                        <input type="text" id="nombre" placeholder="Ingrese su nombre completo" name="nombre" value="<?php echo $usuario->nombre; ?>">
                     </div>
                     <div class="campo">
                         <label for="email">Correo</label>
-                        <input type="email" id="email" placeholder="Ingrese su correo electrónico" name="email">
+                        <input type="email" id="email" placeholder="Ingrese su correo electrónico" name="email" value="<?php echo $usuario->email; ?>">
                     </div>
                     <div class="campo">
                         <label for="password">Contraseña</label>
