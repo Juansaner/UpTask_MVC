@@ -66,6 +66,20 @@ class LoginController {
             $usuario = new Usuario($_POST);
             $alertas =$usuario->validarEmail();
             
+            if(empty($alertas)) {
+                $usuarioExiste = Usuario::where('email', $usuario->email);
+                //Validar que el usuario exista y este confirmado
+                if($usuarioExiste && $usuario->confirmado === 1) {
+                    //Crear token
+                    $usuario->crearToken();
+                    //Actualizar usuario
+                    $usuario->guardar();
+                } else {
+                    $usuario::setAlerta('error', 'El usuario no existe o no se encuentra confirmado');
+                    $alertas = $usuario::getAlertas();
+                }
+            }
+
         }
 
         $router->render('auth/olvide', [
