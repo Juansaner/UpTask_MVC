@@ -6,8 +6,9 @@
         <div class="formulario-contenedor olvide">
             <?php include_once __DIR__ . "/../templates/nombre-sitio.php"; ?>
             <div class="contenedor-sm">
+            <?php include_once __DIR__ . "/../templates/alertas.php"; ?>
                 <p class="descripcion-pagina">Recupera tu acceso TaskFlow</p>
-                <form method="POST" action="/olvide" class="formulario">
+                <form method="POST" action="/olvide" class="formulario" novalidate>
                     <div class="campo">
                         <label for="email">Correo</label>
                         <input type="email" id="email" placeholder="Ingrese su correo electrónico" name="email">
