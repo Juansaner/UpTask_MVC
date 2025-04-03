@@ -3,6 +3,7 @@
 namespace Controllers;
 use MVC\Router;
 use Model\Usuario;
+use Classes\Email;
 
 class LoginController {
     public static function login(Router $router) {
