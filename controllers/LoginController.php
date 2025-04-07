@@ -111,6 +111,19 @@ class LoginController {
             $usuario->sincronizar($_POST);
             //validar la contraseña
             $alertas = $usuario->validarPassword();
+
+            if(empty($alertas)){
+                //Hash password
+                $usuario->hashPassword();
+                //Eliminar token
+                $usuario->token = null;
+                //Guardar el usuario
+                $resultado = $usuario->guardar();
+
+                if($usuario) {
+                    header('Location: /');
+                }
+            }
         }
 
         $alertas = Usuario::getAlertas();
