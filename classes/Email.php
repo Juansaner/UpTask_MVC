@@ -41,6 +41,34 @@ class Email {
         //Enviar correo
         $phpmailer->send();
     }
+
+    public function enviarInstrucciones() {
+        $phpmailer = new PHPMailer();
+        $phpmailer->isSMTP();
+        $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
+        $phpmailer->SMTPAuth = true;
+        $phpmailer->Port = 2525;
+        $phpmailer->Username = 'aa752136ef7fd4';
+        $phpmailer->Password = '56b97a59d72502';
+
+        $phpmailer->setFrom('cuentas@taskflow.com');
+        $phpmailer->addAddress('cuentas@taskflow.com', 'taskflow.com');
+        $phpmailer->Subject = 'Reestablecer tu contraseña';
+
+        //Set HTML
+        $phpmailer->isHTML(TRUE);
+        $phpmailer->CharSet = 'UTF-8';
+
+        $contenido = '<html>';
+        $contenido .= "<p><strong>". $this->nombre ."</strong> has solicitado reestablecer la contraseña, sigue el siguiente enlace para hacerlo.</p>";
+        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/reestablecer?token=" . $this->token . "'>Reestablecer contraseña</a></p>";
+        $contenido .= "<p>Si tu no solicitaste esta cuenta, puedes ignorar este mensaje.</p>";
+        $contenido .= '</html>';
+
+        $phpmailer->Body = $contenido;
+        //Enviar correo
+        $phpmailer->send();
+    }
 }
 
 

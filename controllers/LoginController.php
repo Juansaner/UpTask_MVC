@@ -75,6 +75,10 @@ class LoginController {
                     unset($usuario->password2);
                     //Actualizar usuario
                     $usuario->guardar();
+                    //Enviar correo
+                    $email = new Email($usuario->email, $usuario->nombre, $usuario->token);
+                    $email->enviarInstrucciones();
+
                     $usuario::setAlerta('exito', 'Se ha enviado un email con las instrucciones');
                 } else {
                     $usuario::setAlerta('error', 'El usuario no existe o no se encuentra confirmado');
