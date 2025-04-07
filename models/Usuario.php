@@ -50,6 +50,17 @@ class Usuario extends ActiveRecord {
         return self::$alertas;
     }
 
+    public function validarPassword() {
+        if(!$this->password) {
+            self::$alertas['error'][] = 'La contraseña es obligatoria';
+        }
+
+        if(strlen($this->password) < 6){
+            self::$alertas['error'][] = 'La contraseña de tener al menos 6 caracteres';
+        }
+        return self::$alertas;
+    }
+
     public function hashPassword() {
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
     }

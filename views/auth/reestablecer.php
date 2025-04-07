@@ -10,7 +10,7 @@
                 <?php include_once __DIR__ . "/../templates/alertas.php"; ?>
 
                 <?php if($mostrar) {?>
-                <form method="POST" action="/reestablecer" class="formulario">
+                <form method="POST" class="formulario">
                     <div class="campo">
                         <label for="password">Contraseña</label>
                         <input type="password" id="password" placeholder="Ingrese su contraseña" name="password">
