@@ -9,9 +9,18 @@ class LoginController {
     public static function login(Router $router) {
         $alertas = [];
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $auth = new Usuario($_POST);
-            $alertas = $auth->validarLogin();
+            $usuario = new Usuario($_POST);
+            $alertas = $usuario->validarLogin();
+
+            if(empty($alertas)) {
+                $usuario = Usuario::where('email', $usuario->email);
+                if(!$usuario || !$usuario->confirmado){
+                    Usuario::setAlerta('error', 'El usuario no existe o no está confirmado');
+                } 
+            }
         }
+
+        $alertas = Usuario::getAlertas();
 
         $router->render('auth/login', [
             'titulo' => 'Iniciar sesión',
