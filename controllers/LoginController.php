@@ -7,12 +7,15 @@ use Classes\Email;
 
 class LoginController {
     public static function login(Router $router) {
-        if($_SERVER['REQUEST_METHOD']) {
-
+        $alertas = [];
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $auth = new Usuario($_POST);
+            $alertas = $auth->validarLogin();
         }
 
         $router->render('auth/login', [
-            'titulo' => 'Iniciar sesión'
+            'titulo' => 'Iniciar sesión',
+            'alertas' => $alertas
         ]);
     }
 
