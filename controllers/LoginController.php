@@ -25,7 +25,7 @@ class LoginController {
                     $_SESSION['email'] = $usuario->email;
                     $_SESSION['login'] = true;
                     //Redireccionar
-                    header('Location: /proyectos');
+                    header('Location: /dashboard');
                     debuguear($_SESSION);
                     
                 } else {
