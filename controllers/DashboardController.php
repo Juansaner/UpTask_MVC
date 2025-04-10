@@ -11,5 +11,19 @@ class DashboardController {
             'titulo' => 'Proyectos'
         ]);
     }
+
+    public static function crear_proyecto(Router $router){
+        session_start();
+        $router->render('dashboard/crear-proyecto', [
+            'titulo' => 'Crear proyecto'
+        ]);
+    }
+
+    public static function perfil(Router $router){
+        session_start();
+        $router->render('dashboard/perfil', [
+            'titulo' => 'Perfil'
+        ]);
+    }
 }
 ?>
