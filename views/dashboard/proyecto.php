@@ -5,3 +5,5 @@
     </div>
 </div>
 <?php include_once __DIR__ . '/footer_dashboard.php'; ?>
+
+<?php $script = '<script src="build/js/tareas.js"></script>'; ?>

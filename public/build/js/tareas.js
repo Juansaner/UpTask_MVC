@@ -1,0 +1,1 @@
+document.querySelector("#nueva-tarea").addEventListener("click",(function(){console.log("Mostrar formulario")}));
