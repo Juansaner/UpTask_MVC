@@ -19,6 +19,40 @@
         transition-duration: 500ms;
         transition-timing-function: ease-out;
         opacity: 0;
+        border-radius: 1rem;
+
+        legend {
+            font-size: 2rem;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        label {
+            margin-bottom: 1rem;
+        }
+
+        .opciones {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .submit-nueva-tarea {
+            @include m.boton(v.$indigo, v.$blanco);
+            border-radius: 1rem;
+            @include m.tablet {
+                width: auto;
+            }
+        }
+
+        .cerrar-modal {
+            @include m.boton(v.$grisClaro, v.$negro);
+            border-radius: 1rem;
+            @include m.tablet {
+                width: auto;
+            }
+        }
 
         &.animar {
             position: relative;
