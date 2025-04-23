@@ -84,6 +84,8 @@ async function agregarTarea(tarea) {
         })
         const resultado = await respuesta.json();
         console.log(resultado);
+        //Muestra alerta de error
+        mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.formulario'));
     } catch(error) {
         console.log(error);
     }
