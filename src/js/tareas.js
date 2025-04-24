@@ -18,7 +18,27 @@ async function obtenerTareas() {
 }
 
 function mostrarTareas(tareas) {
-    console.log('Mostrando', tareas);
+    if(tareas.length === 0 ) {
+        const contenedorTareas = document.querySelector('#listado-tareas');
+
+        const textoNoTarea = document.createElement('LI');
+        textoNoTarea.textContent = 'No hay tareas para mostrar';
+        textoNoTarea.classList.add('no-tareas');
+
+        contenedorTareas.appendChild(textoNoTarea);
+        return;
+    }
+
+    tareas.forEach(tareas => {
+        const { id, nombre, estado} = tareas;
+        const contenedorTarea = document.createElement('LI');
+        contenedorTarea.dataset.tareaId = id;
+        contenedorTarea.classList.add('tarea');
+
+        const nombreTarea = document.createElement('P');
+        nombreTarea.textContent = nombre;
+        console.log(nombreTarea);
+    });
 }
 
 function mostrarFormulario() {
