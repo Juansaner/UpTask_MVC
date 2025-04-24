@@ -1,6 +1,25 @@
 (function() {
+
+    obtenerTareas();
 const nuevaTareaBtn = document.querySelector('#nueva-tarea');
 nuevaTareaBtn.addEventListener('click', mostrarFormulario);
+
+async function obtenerTareas() {
+    try {
+        id = obtenerProyecto();
+        url = `/api/tareas?id=${id}`;
+        respuesta = await fetch(url);
+        resultado = await respuesta.json();
+        const { tareas } = resultado;
+        mostrarTareas(tareas);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+function mostrarTareas(tareas) {
+    console.log('Mostrando', tareas);
+}
 
 function mostrarFormulario() {
     const modal = document.createElement('DIV');
