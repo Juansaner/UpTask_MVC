@@ -51,7 +51,20 @@ function mostrarTareas(tareas) {
         btnEstadoTarea.classList.add(`${estados[estado].toLowerCase()}`);
         btnEstadoTarea.textContent = estados[estado];
         btnEstadoTarea.dataset.estadoTarea = estado;
-        console.log(btnEstadoTarea);
+
+        const btnEliminarTarea = document.createElement('BUTTON');
+        btnEliminarTarea.classList.add('btn-eliminar-tarea');
+        btnEliminarTarea.dataset.idTarea =id;
+        btnEliminarTarea.textContent = 'Eliminar';
+
+        opcionesDiv.appendChild(btnEstadoTarea);
+        opcionesDiv.appendChild(btnEliminarTarea);
+
+        contenedorTarea.appendChild(nombreTarea);
+        contenedorTarea.appendChild(opcionesDiv);
+        
+        const listadoTareas = document.querySelector('#listado-tareas');
+        listadoTareas.appendChild(contenedorTarea);
     });
 }
 
