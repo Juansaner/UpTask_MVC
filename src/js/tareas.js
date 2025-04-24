@@ -29,6 +29,11 @@ function mostrarTareas(tareas) {
         return;
     }
 
+    const estados = {
+        0: 'Pendiente',
+        1: 'Completada'
+    }
+
     tareas.forEach(tareas => {
         const { id, nombre, estado} = tareas;
         const contenedorTarea = document.createElement('LI');
@@ -37,7 +42,16 @@ function mostrarTareas(tareas) {
 
         const nombreTarea = document.createElement('P');
         nombreTarea.textContent = nombre;
-        console.log(nombreTarea);
+
+        const opcionesDiv = document.createElement('DIV');
+        opcionesDiv.classList.add('opciones');
+
+        const btnEstadoTarea = document.createElement('BUTTON');
+        btnEstadoTarea.classList.add('btn-estado-tarea');
+        btnEstadoTarea.classList.add(`${estados[estado].toLowerCase()}`);
+        btnEstadoTarea.textContent = estados[estado];
+        btnEstadoTarea.dataset.estadoTarea = estado;
+        console.log(btnEstadoTarea);
     });
 }
 
