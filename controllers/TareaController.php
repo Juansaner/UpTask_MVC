@@ -6,7 +6,14 @@ use Model\Tarea;
 
 class TareaController {
     public static function index() {
-        echo 'TareaController';
+        $proyectoId = $_GET['id'];
+        $proyecto = Proyecto::where('url', $proyectoId);
+        session_start();
+        if(!$proyecto || $proyecto->propietarioId !== $_SESSION['id']) {
+            header('Location: /404');
+        }
+        $tarea = Tarea::belongsTo('proyectoId', $proyecto->id);
+        echo json_encode(['tareas' => $tarea]);
     }
 
     public static function crear() {
@@ -21,19 +28,18 @@ class TareaController {
                     'mensaje' => 'Hubo un error al crear la tarea'
                  ];
                  echo json_encode($respuesta);
-            return;
+                 return;
             } 
             //Instanciar y guardar la tarea
             $tarea = new Tarea($_POST);
             $tarea->proyectoId = $proyecto->id;
             $resultado = $tarea->guardar();
-                $respuesta = [ 
-                    'tipo' => 'exito',
-'id' => $resultado['id'],
-                    'mensaje' => 'Tarea creada correctamente'
-                 ];
-                 echo json_encode($respuesta);
-            }
+            $respuesta = [
+                'tipo' => 'exito',
+                'id' => $resultado['id'],
+                'mensaje' => 'Tarea creada correctamente'
+            ];
+            echo json_encode($respuesta);
         }
     }
 
