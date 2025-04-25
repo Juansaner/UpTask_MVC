@@ -1,6 +1,7 @@
 (function() {
 
     obtenerTareas();
+    let tareas = [];
 const nuevaTareaBtn = document.querySelector('#nueva-tarea');
 nuevaTareaBtn.addEventListener('click', mostrarFormulario);
 
@@ -10,14 +11,15 @@ async function obtenerTareas() {
         url = `/api/tareas?id=${id}`;
         respuesta = await fetch(url);
         resultado = await respuesta.json();
-        const { tareas } = resultado;
-        mostrarTareas(tareas);
+        tareas = resultado.tareas;
+        mostrarTareas();
     } catch (error) {
         console.log(error);
     }
 }
 
-function mostrarTareas(tareas) {
+function mostrarTareas() {
+    limpiarTareas();
     if(tareas.length === 0 ) {
         const contenedorTareas = document.querySelector('#listado-tareas');
 
@@ -157,6 +159,15 @@ async function agregarTarea(tarea) {
             setTimeout(() => {
                 modal.remove();
             }, 3000)
+            //Agregar el objeto de tarea a la variable global de tareas
+            const tareaObj = {
+                id: String(resultado.id),
+                nombre: tarea,
+                estado: "0",
+                proyectoId: resultado.proyectoId
+            }
+            tareas = [...tareas, tareaObj];
+            mostrarTareas();
         }
     } catch(error) {
         console.log(error);
@@ -168,4 +179,13 @@ function obtenerProyecto() {
     const proyecto = Object.fromEntries(proyectoParams.entries());
     return proyecto.id;
 }
+
+function limpiarTareas() {
+    const listadoTareas = document.querySelector('#listado-tareas');
+    
+    while(listadoTareas.firstChild) {
+        listadoTareas.removeChild(listadoTareas.firstChild);
+    }
+}
+
 })();
