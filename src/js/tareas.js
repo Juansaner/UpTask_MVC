@@ -36,8 +36,8 @@ function mostrarTareas() {
         1: 'Completada'
     }
 
-    tareas.forEach(tareas => {
-        const { id, nombre, estado} = tareas;
+    tareas.forEach(tarea => {
+        const { id, nombre, estado} = tarea;
         const contenedorTarea = document.createElement('LI');
         contenedorTarea.dataset.tareaId = id;
         contenedorTarea.classList.add('tarea');
@@ -53,6 +53,9 @@ function mostrarTareas() {
         btnEstadoTarea.classList.add(`${estados[estado].toLowerCase()}`);
         btnEstadoTarea.textContent = estados[estado];
         btnEstadoTarea.dataset.estadoTarea = estado;
+        btnEstadoTarea.ondblclick = function() {
+            cambiarEstadoTarea({...tarea});
+        }
 
         const btnEliminarTarea = document.createElement('BUTTON');
         btnEliminarTarea.classList.add('btn-eliminar-tarea');
@@ -135,6 +138,16 @@ function mostrarAlerta(mensaje, tipo, referencia) {
     setTimeout(() => { 
         alerta.remove();
     }, 5000)
+}
+
+function cambiarEstadoTarea(tarea) {
+    const nuevoEstado = tarea.estado === "1" ? "0" : "1";
+    tarea.estado = nuevoEstado;
+    actualizarTarea(tarea);
+}
+
+function actualizarTarea(tarea) {
+    console.log(tarea)
 }
 
 //Consultar el servidor para agregar tarea al proyectoactual
