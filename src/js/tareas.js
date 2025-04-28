@@ -162,6 +162,7 @@ async function actualizarTarea(tarea) {
             body: datos
         });
         const resultado = await respuesta.json();
+        
     } catch (error) {
         console.log(error);
     }
