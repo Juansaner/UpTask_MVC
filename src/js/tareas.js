@@ -165,6 +165,15 @@ async function actualizarTarea(tarea) {
         if(resultado.respuesta.tipo === 'exito') {
             mostrarAlerta(resultado.respuesta.mensaje, resultado.respuesta.tipo, document.querySelector('.contenedor-nueva-tarea'));
         }
+        tareas = tareas.map(tareaMemoria => {
+            if(tareaMemoria.id === id) {
+                //Actualiza el estado de la tarea en la memoria
+                tareaMemoria.estado = estado;
+            }
+            return tareaMemoria;
+        });
+        //Actualiza el html con el nuevo estado
+        mostrarTareas();
     } catch (error) {
         console.log(error);
     }
