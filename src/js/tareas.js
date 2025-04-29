@@ -132,7 +132,7 @@ function mostrarAlerta(mensaje, tipo, referencia) {
     alerta.classList.add('alerta', tipo);
     alerta.textContent = mensaje;
     //Inserta la alerta antes del legend
-    referencia.insertBefore(alerta, document.querySelector('legend').nextSibling);
+    referencia.parentElement.insertBefore(alerta, referencia.nextSibling);
 
     //Eliminar alerta despues de 5 segundos
     setTimeout(() => { 
@@ -162,7 +162,9 @@ async function actualizarTarea(tarea) {
             body: datos
         });
         const resultado = await respuesta.json();
-        
+        if(resultado.respuesta.tipo === 'exito') {
+            mostrarAlerta(resultado.respuesta.mensaje, resultado.respuesta.tipo, document.querySelector('.contenedor-nueva-tarea'));
+        }
     } catch (error) {
         console.log(error);
     }
