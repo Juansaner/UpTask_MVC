@@ -215,7 +215,6 @@ async function eliminarTarea(tarea) {
             tareas = tareas.filter(tareaMemoria => tareaMemoria.id !== id);
             mostrarTareas();
         }
-        console.log(resultado);
     } catch (error) {
         console.log(error);
     }
