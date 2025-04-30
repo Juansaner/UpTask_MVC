@@ -61,6 +61,9 @@ function mostrarTareas() {
         btnEliminarTarea.classList.add('btn-eliminar-tarea');
         btnEliminarTarea.dataset.idTarea =id;
         btnEliminarTarea.textContent = 'Eliminar';
+        btnEliminarTarea.ondblclick = function() {
+            confirmarEliminarTarea({...tarea});
+        }
 
         opcionesDiv.appendChild(btnEstadoTarea);
         opcionesDiv.appendChild(btnEliminarTarea);
@@ -177,6 +180,19 @@ async function actualizarTarea(tarea) {
     } catch (error) {
         console.log(error);
     }
+}
+
+function confirmarEliminarTarea(tarea) {
+    Swal.fire({
+        title: "¿Eliminar tarea?",
+        showCancelButton: true,
+        confirmButtonText: "Si",
+        cancelButtonText: `No`
+      }).then((result) => {
+        if (result.isConfirmed) {
+            
+        }
+      });
 }
 
 //Consultar el servidor para agregar tarea al proyectoactual
