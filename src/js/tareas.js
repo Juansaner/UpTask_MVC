@@ -180,17 +180,27 @@ async function actualizarTarea(tarea) {
         });
         const resultado = await respuesta.json();
         if(resultado.respuesta.tipo === 'exito') {
-            mostrarAlerta(resultado.respuesta.mensaje, resultado.respuesta.tipo, document.querySelector('.contenedor-nueva-tarea'));
-        }
-        tareas = tareas.map(tareaMemoria => {
-            if(tareaMemoria.id === id) {
-                //Actualiza el estado de la tarea en la memoria
-                tareaMemoria.estado = estado;
+            Swal.fire(
+                resultado.respuesta.mensaje,
+                "Tarea actualizada",
+                "success"
+            );
+            const modal = document.querySelector('.modal');
+            if(modal) {
+                modal.remove();
             }
-            return tareaMemoria;
-        });
-        //Actualiza el html con el nuevo estado
-        mostrarTareas();
+
+            tareas = tareas.map(tareaMemoria => {
+                if(tareaMemoria.id === id) {
+                    //Actualiza el estado de la tarea en la memoria
+                    tareaMemoria.estado = estado;
+                    tareaMemoria.nombre = nombre;
+                }
+                return tareaMemoria;
+            });
+            //Actualiza el html con el nuevo estado
+            mostrarTareas();
+        }
     } catch (error) {
         console.log(error);
     }
@@ -249,7 +259,7 @@ async function agregarTarea(tarea) {
         })
         const resultado = await respuesta.json();
         //Muestra alerta de error
-        mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.formulario'));
+        mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.formulario lengend'));
         //Elimina el modal despues de agregar la tarea
         if(resultado.tipo === 'exito') {
             const modal = document.querySelector('.modal');
