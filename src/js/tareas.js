@@ -190,9 +190,35 @@ function confirmarEliminarTarea(tarea) {
         cancelButtonText: `No`
       }).then((result) => {
         if (result.isConfirmed) {
-            
+            eliminarTarea(tarea);
         }
       });
+}
+
+async function eliminarTarea(tarea) {
+    const {id, nombre, estado} = tarea;
+    const datos = new FormData();
+    datos.append('id', id);
+    datos.append('nombre', nombre);
+    datos.append('estado', estado);
+    datos.append('proyectoId', obtenerProyecto());
+    try {
+        const url = 'http://localhost:3000/api/tarea/eliminar';
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        })
+        const resultado = await respuesta.json();
+        if(resultado.resultado) {
+            Swal.fire('¡Eliminada!', resultado.mensaje, 'success');
+            //Trae todas las tareas diferentes a la que se va eliminar
+            tareas = tareas.filter(tareaMemoria => tareaMemoria.id !== id);
+            mostrarTareas();
+        }
+        console.log(resultado);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 //Consultar el servidor para agregar tarea al proyectoactual
