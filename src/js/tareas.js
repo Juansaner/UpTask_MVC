@@ -40,6 +40,8 @@ async function obtenerTareas() {
 
 function mostrarTareas() {
     limpiarTareas();
+    totalPendientes();
+    totalCompletadas();
     const arrayTareas = filtradas.length ? filtradas : tareas;
     if(arrayTareas.length === 0 ) {
         const contenedorTareas = document.querySelector('#listado-tareas');
@@ -98,6 +100,26 @@ function mostrarTareas() {
         const listadoTareas = document.querySelector('#listado-tareas');
         listadoTareas.appendChild(contenedorTarea);
     });
+}
+
+function totalPendientes() {
+    const totalPendientes = tareas.filter(tarea => tarea.estado === '0');
+    const pendientesRadio = document.querySelector('#pendientes');
+    if(totalPendientes.length === 0) {
+        pendientesRadio.disabled = true;
+    } else {
+        pendientesRadio.diabled = false;
+    }
+}
+
+function totalCompletadas() {
+    const totalCompletadas = tareas.filter(tarea => tarea.estado === '1');
+    const completadasRadio = document.querySelector('#completadas');
+    if(totalCompletadas.length === 0) {
+        completadasRadio.disabled = true;
+    } else {
+        completadasRadio.disabled = false;
+    }
 }
 
 function mostrarFormulario(editar = false, tarea = {}) {
