@@ -2,10 +2,28 @@
 
     obtenerTareas();
     let tareas = [];
+    let filtradas = [];
 const nuevaTareaBtn = document.querySelector('#nueva-tarea');
 nuevaTareaBtn.addEventListener('click', function() {
     mostrarFormulario();
 });
+
+//Filtros de busqueda
+const filtros = document.querySelectorAll('#filtros input[type="radio"]');
+filtros.forEach(filtro => {
+    filtro.addEventListener('input', filtrarTareas)
+});
+
+function filtrarTareas(e) {
+    const filtro = e.target.value;
+    if(filtro !== '') {
+        filtradas = tareas.filter( tarea => tarea.estado === filtro);
+    } else {
+        filtradas = [];
+    }
+    mostrarTareas();
+}
+
 
 async function obtenerTareas() {
     try {
@@ -22,7 +40,8 @@ async function obtenerTareas() {
 
 function mostrarTareas() {
     limpiarTareas();
-    if(tareas.length === 0 ) {
+    const arrayTareas = filtradas.length ? filtradas : tareas;
+    if(arrayTareas.length === 0 ) {
         const contenedorTareas = document.querySelector('#listado-tareas');
 
         const textoNoTarea = document.createElement('LI');
@@ -38,7 +57,7 @@ function mostrarTareas() {
         1: 'Completada'
     }
 
-    tareas.forEach(tarea => {
+    arrayTareas.forEach(tarea => {
         const { id, nombre, estado} = tarea;
         const contenedorTarea = document.createElement('LI');
         contenedorTarea.dataset.tareaId = id;
