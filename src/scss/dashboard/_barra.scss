@@ -12,14 +12,18 @@
     }
 
     h1 {
+        font-size: 4rem;
         color: v.$blanco;
         margin: 0;
     }
 
     .menu {
         img {
-            width: 8rem;
-            color: v.$blanco;
+            transform: scale(2);
+            filter: brightness(0) invert(1);
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }

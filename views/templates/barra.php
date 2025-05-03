@@ -1,7 +1,7 @@
 <div class="barra-mobile">
     <h1>TaskFlow</h1>
     <div class="menu">
-        <img src="/build/img/menu.svg" alt="Icono menu" class="mobile-menu">
+        <img src="/build/img/menu.svg" alt="Icono menu" id="mobile-menu">
     </div>
 </div>
 
