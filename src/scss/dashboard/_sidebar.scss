@@ -23,6 +23,10 @@
             display: none;
         }
     }
+
+    &.ocultar {
+        opacity: 0;
+    }
     
     @include m.tablet {
         height: 100%;
@@ -30,10 +34,29 @@
         padding: 2rem;
         background-color: v.$indigo;
     }
-    h2 {
-        color: v.$blanco;
-        margin: 0;
-        text-align: center;
+
+    .contenedor-sidebar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+        h2 {
+            font-size: 4rem;
+            color: v.$blanco;
+            margin: 0;
+            text-align: center;
+        }
+        .cerrar-menu {
+            display: flex;
+            justify-content: center;
+            img {
+                transform: scale(2);
+                filter: brightness(0) invert(1);
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
     }
     .sidebar-nav {
         margin-top: 5rem;
