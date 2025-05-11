@@ -75,6 +75,9 @@ class DashboardController {
             $alertas = $usuario->validar_perfil();
             if(empty($alertas)) {
                 //Guardar el usuario
+                $usuario->guardar();
+
+                $_SESSION['nombre'] = $usuario->nombre;
             }
         }
 
