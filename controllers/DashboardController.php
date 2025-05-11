@@ -76,7 +76,9 @@ class DashboardController {
             if(empty($alertas)) {
                 //Guardar el usuario
                 $usuario->guardar();
-
+                Usuario::setAlerta('exito', 'Usuario actualizado correctamente');
+                $alertas = Usuario::getAlertas();
+                //Guardar el nombre en la sesion
                 $_SESSION['nombre'] = $usuario->nombre;
             }
         }
