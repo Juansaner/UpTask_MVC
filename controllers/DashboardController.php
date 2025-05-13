@@ -97,5 +97,16 @@ class DashboardController {
             'usuario'=> $usuario
         ]);
     }
+
+    public static function cambiar_password(Router $router) {
+        session_start();
+        isAuth();
+        $alertas = [];
+
+        $router->render('dashboard/cambiar-password', [
+            'titulo' => 'Cambiar contraseña',
+            'alertas' => $alertas
+        ]);
+    } 
 }
 ?>

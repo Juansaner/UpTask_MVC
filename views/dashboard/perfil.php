@@ -2,7 +2,7 @@
 
 <div class="contenedor-sm">
     <?php include_once __DIR__ . '/../templates/alertas.php'; ?>
-
+    <a href="/cambiar-password" class="enlace">Cambiar contraseña</a>
     <form class="formulario" action="" method="POST">
         <div class="campo">
             <label for="nombre">Nombre</label>
