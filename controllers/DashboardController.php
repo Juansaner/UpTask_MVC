@@ -114,7 +114,19 @@ class DashboardController {
 
                 if($resultado) {
                     //Guardar la contraseña nueva
+                    $usuario->password = $usuario->password_nuevo;
+                    //Eliminar propiedades no deseadas
+                    unset($usuario->password_actual);
+                    unset($usuario->password_nuevo);
+                    //Hashear la contraseña nueva
+                    $usuario->hashPassword();
 
+                    //Actualizar el usuario
+                    $resultado = $usuario->guardar();
+                    if($resultado) {
+                        Usuario::setAlertas('exito', 'Contraseña actualizada correctamente');
+                        $alertas = Usuario::getAlertas();
+                    }
                 } else {
                     Usuario::setAlerta('error', 'Contraseña incorrecta');
                     $alertas = Usuario::getAlertas();
