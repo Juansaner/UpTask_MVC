@@ -110,7 +110,15 @@ class DashboardController {
             $alertas = $usuario->nuevo_password();
 
             if(empty($alertas)) {
-            
+                $resultado =$usuario->comprobar_password();
+
+                if($resultado) {
+                    //Guardar la contraseña nueva
+
+                } else {
+                    Usuario::setAlerta('error', 'Contraseña incorrecta');
+                    $alertas = Usuario::getAlertas();
+                }
             }
         }
 
