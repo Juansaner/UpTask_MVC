@@ -23,11 +23,45 @@
 
     .formulario .campo input {
         background-color: lighten($grisOscuro, 15%);
+        &::placeholder {
+                color: darken(v.$grisClaro, 20%);
+            }
+    }
+
+    .sidebar {
+        @include m.tablet {
+                background-color: darken($grisOscuro, 5%);
+        }
+        .sidebar-nav a {
+            &.activo,
+            &:hover {
+                background-color: v.$naranja;
+            }
+        }
     }
 
     .barra,
     .barra-mobile {
         background-color: darken($grisOscuro, 7%);
+    }
+
+    .barra {
+        p {
+            color: v.$grisClaro;
+            span {
+                color: v.$naranja;
+            }
+        }     
+
+        .cerrar-sesion {
+            @include m.boton(v.$naranja, v.$blanco);
+            font-size: 1.2rem;
+            padding: 1rem;
+            border-radius: .5rem;
+            @include m.tablet() {
+                width: auto;
+            }
+        }
     }
 
     .filtros {
@@ -37,7 +71,7 @@
             color: v.$blanco;
         }
         input[type="radio"] {
-            accent-color: $grisOscuro;
+            accent-color: v.$naranja;
         }
     }
 
@@ -47,6 +81,13 @@
         .enlace {
             color: v.$grisClaro;
             &:hover {
+                color: darken(v.$grisClaro, 20%);
+            }
+        }
+
+        .formulario input:not([type=submit]) {
+            color: v.$blanco;
+            &::placeholder {
                 color: darken(v.$grisClaro, 20%);
             }
         }
@@ -64,6 +105,19 @@
         border: none;
         p {
             color: v.$grisClaro;
+        }
+    }
+
+    .modal .formulario {
+        background-color: $grisOscuro;
+        legend {
+            color: v.$grisClaro;
+        }
+        input[type="text"] {
+            color: v.$blanco;
+            &::placeholder {
+                color: darken(v.$grisClaro, 20%);
+            }
         }
     }
 }
