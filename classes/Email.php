@@ -20,8 +20,8 @@ class Email {
         $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
         $phpmailer->SMTPAuth = true;
         $phpmailer->Port = 2525;
-        $phpmailer->Username = 'aa752136ef7fd4';
-        $phpmailer->Password = '56b97a59d72502';
+        $phpmailer->Username = '948e9bc57c3a43';
+        $phpmailer->Password = '1038c5fbc1cdd8';
 
         $phpmailer->setFrom('cuentas@taskflow.com');
         $phpmailer->addAddress('cuentas@taskflow.com', 'taskflow.com');

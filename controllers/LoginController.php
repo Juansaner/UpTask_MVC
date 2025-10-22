@@ -112,12 +112,12 @@ class LoginController {
                     $usuario::setAlerta('error', 'El usuario no existe o no se encuentra confirmado');
                 }
             }
+            $alertas = $usuario::getAlertas();
         }
-        $alertas = $usuario::getAlertas();
 
         $router->render('auth/olvide', [
             'titulo' => 'Olvidé contraseña',
-            'alertas' => $alertas
+            'alertas' => $alertas,
         ]);
     }
 
