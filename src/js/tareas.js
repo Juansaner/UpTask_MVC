@@ -214,7 +214,7 @@ async function actualizarTarea(tarea) {
     datos.append('proyectoId', obtenerProyecto());
 
     try {
-        const url = 'http://localhost:3000/api/tarea/actualizar';
+        const url = `${location.origin}/api/tarea/actualizar`;
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
