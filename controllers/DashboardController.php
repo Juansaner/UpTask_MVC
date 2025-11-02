@@ -63,6 +63,13 @@ class DashboardController {
         ]);
     }
 
+    public static function eliminar_proyecto(Router $router) {
+
+        $router->render('dashboard/eliminar-proyecto', [
+            
+        ]);
+    }
+
     public static function perfil(Router $router){
         session_start();
         isAuth();
