@@ -268,7 +268,7 @@ async function eliminarTarea(tarea) {
     datos.append('estado', estado);
     datos.append('proyectoId', obtenerProyecto());
     try {
-        const url = 'http://localhost:3000/api/tarea/eliminar';
+        const url = `${location.origin}/api/tarea/eliminar`;
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
@@ -293,7 +293,7 @@ async function agregarTarea(tarea) {
     datos.append('proyectoId', obtenerProyecto());
 
     try {
-        const url = 'http://localhost:3000/api/tarea';
+        const url = `${location.origin}/api/tarea`;
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
