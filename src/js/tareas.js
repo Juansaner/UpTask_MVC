@@ -300,7 +300,7 @@ async function agregarTarea(tarea) {
         })
         const resultado = await respuesta.json();
         //Muestra alerta de error
-        mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.formulario lengend'));
+        mostrarAlerta(resultado.mensaje, resultado.tipo, document.querySelector('.formulario legend'));
         //Elimina el modal despues de agregar la tarea
         if(resultado.tipo === 'exito') {
             const modal = document.querySelector('.modal');
