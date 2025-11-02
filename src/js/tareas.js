@@ -293,7 +293,7 @@ async function agregarTarea(tarea) {
     datos.append('proyectoId', obtenerProyecto());
 
     try {
-        const url = `${location.origin}/api/tarea`;
+        const url = `/api/tarea`;
         const respuesta = await fetch(url, {
             method: 'POST',
             body: datos
