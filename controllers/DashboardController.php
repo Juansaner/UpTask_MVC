@@ -63,11 +63,9 @@ class DashboardController {
         ]);
     }
 
-    public static function eliminar_proyecto(Router $router) {
+    public static function eliminar_proyecto() {
 
-        $router->render('dashboard/eliminar-proyecto', [
-            
-        ]);
+        
     }
 
     public static function perfil(Router $router){

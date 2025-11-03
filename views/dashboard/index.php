@@ -8,6 +8,7 @@
                 <a href="/proyecto?id=<?php echo $proyecto->url; ?>">
                     <?php echo $proyecto->proyecto; ?>
                 </a>
+                <input type="button" class="btn btn-eliminar" value="Eliminar"/>
             </li>
         <?php } ?>
     </ul>
