@@ -347,12 +347,14 @@ async function eliminarProyecto() {
         datos.append('id', obtenerProyecto());
 
         try {
-            const url = `${location.origin}/api/proyecto/eliminar`;
+            const url = `${location.origin}/api/proyecto/eliminar_proyecto`;
             const respuesta = await fetch(url, {
                 method: 'POST',
                 body: datos
             });
-            console.log(respuesta);
+
+            const resultado = await respuesta.json();
+            
         } catch (error) {
             console.log(error);
         }

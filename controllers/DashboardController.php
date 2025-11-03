@@ -65,7 +65,29 @@ class DashboardController {
 
     public static function eliminar_proyecto() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            session_start();
 
+            //Verificar que el proyecto exista
+            $proyecto = Proyecto::where('url', $_POST['id']);
+            if(!$proyecto || $proyecto->propietarioId !== $_SESSION['id']) {
+                $respuesta = [
+                    'tipo' => 'error',
+                    'mensaje' => 'Hubo un error al eliminar el proyecto'
+                ];
+                echo json_encode($respuesta);
+                return;
+            }
+
+            $resultado = $proyecto->eliminar();
+
+            if($resultado) {
+                $respuesta = [
+                    'tipo' => 'exito',
+                    'mensaje' => 'Proyecto eliminado correctamente'
+                ];
+            }
+
+            echo json_encode(['respuesta' => $respuesta]);
         }
         
     }

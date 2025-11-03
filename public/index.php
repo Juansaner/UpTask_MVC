@@ -39,7 +39,7 @@ $router->get('/cambiar-password', [DashboardController::class, 'cambiar_password
 $router->post('/cambiar-password', [DashboardController::class, 'cambiar_password']);
 
 //API para proyecto
-$router->post('/api/proyecto/eliminar', [DashboardController::class, 'eliminar_proyecto']);
+$router->post('/api/proyecto/eliminar_proyecto', [DashboardController::class, 'eliminar_proyecto']);
 
 //API para tareas
 $router->get('/api/tareas', [TareaController::class, 'index']);
