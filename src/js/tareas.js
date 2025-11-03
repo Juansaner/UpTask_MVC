@@ -354,7 +354,12 @@ async function eliminarProyecto() {
             });
 
             const resultado = await respuesta.json();
-            
+            if(resultado.respuesta.tipo === 'exito') {
+                Swal.fire('Eliminado!', resultado.respuesta.mensaje, 'success');
+                setTimeout(() => {
+                    window.location.replace(`${location.origin}/dashboard`);
+                }, 1500);
+            }
         } catch (error) {
             console.log(error);
         }
