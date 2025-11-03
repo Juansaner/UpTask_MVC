@@ -64,7 +64,9 @@ class DashboardController {
     }
 
     public static function eliminar_proyecto() {
-
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+        }
         
     }
 
