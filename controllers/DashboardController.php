@@ -4,6 +4,7 @@ namespace Controllers;
 use MVC\Router;
 use Model\Proyecto;
 use Model\Usuario;
+use Model\Tarea;
 
 class DashboardController {
     public static function index(Router $router) {
@@ -76,6 +77,14 @@ class DashboardController {
                 ];
                 echo json_encode($respuesta);
                 return;
+            }
+
+            //Verificar las tareas que pertenecen al proyecto
+            $tareas = Tarea::belongsTo('proyectoId', $proyecto->id);
+            if($tareas) {
+                foreach($tareas as $tarea) {
+                    $tarea->eliminar();
+                }
             }
 
             $resultado = $proyecto->eliminar();
