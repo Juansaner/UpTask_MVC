@@ -323,48 +323,6 @@ async function agregarTarea(tarea) {
 }
 
 
-//Funcionalidades proyecto
-const btnEliminarProyecto = document.querySelector('#eliminar-proyecto');
-if(btnEliminarProyecto) {
-    btnEliminarProyecto.addEventListener( 'click', () => {
-        Swal.fire({
-            title: '¿Eliminar este proyecto?',
-            text: 'Esta acción no se puede deshacer',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar'
-        }).then(result => {
-            if (result.isConfirmed) {
-                eliminarProyecto();
-            }
-        });
-    });
-}
-
-async function eliminarProyecto() {
-        const datos = new FormData();
-        datos.append('id', obtenerProyecto());
-
-        try {
-            const url = `${location.origin}/api/proyecto/eliminar_proyecto`;
-            const respuesta = await fetch(url, {
-                method: 'POST',
-                body: datos
-            });
-
-            const resultado = await respuesta.json();
-            if(resultado.respuesta.tipo === 'exito') {
-                Swal.fire('Eliminado!', resultado.respuesta.mensaje, 'success');
-                setTimeout(() => {
-                    window.location.replace(`${location.origin}/dashboard`);
-                }, 1500);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
 function obtenerProyecto() {
     const proyectoParams = new URLSearchParams(window.location.search);
     const proyecto = Object.fromEntries(proyectoParams.entries());

@@ -2,7 +2,6 @@
 <div class="contenedor-sm">
     <div class="contenedor-nueva-tarea">
         <button type="button" class="nueva-tarea" id="nueva-tarea">Nueva tarea</button>
-        <button type="button" class="btn eliminar-proyecto" id="eliminar-proyecto">Eliminar proyecto</button>
     </div>
 
     <div id="filtros" class="filtros">
