@@ -35,16 +35,44 @@
         modal.addEventListener('click', function(e) {
             e.preventDefault();
             if(e.target.classList.contains('cerrar-modal')) {
-                const formulario = document.querySelector('.formulario');
+                const formulario = document.querySelector('.formulario-cambiar-nombre');
                 formulario.classList.add('cerrar');
                 setTimeout(() => {
                     modal.remove();
                 }, 500);
             }
-        })
+
+            if(e.target.classList.contains('submit-nuevo-nombre')) {
+                const nombreProyecto = document.querySelector('#nombre').value.trim();
+                if(nombreProyecto === '') {
+                    //Mostrar alerta
+                    mostrarAlerta('El titulo es obligatorio', 'error', document.querySelector('.formulario-cambiar-nombre legend'));
+                    return;
+                }
+            }
+        });
 
         document.querySelector('body').appendChild(modal);
     };
+
+    function mostrarAlerta(mensaje, tipo, referencia) {
+    //Previene la creacion de multiples alertas
+    const alertaPrevia = document.querySelector('.alerta');
+    if(alertaPrevia) {
+        alertaPrevia.remove();
+    }
+
+    const alerta = document.createElement('DIV');
+    alerta.classList.add('alerta', tipo);
+    alerta.textContent = mensaje;
+    //Inserta la alerta antes del legend
+    referencia.parentElement.insertBefore(alerta, referencia.nextSibling);
+
+    //Eliminar alerta despues de 5 segundos
+    setTimeout(() => { 
+        alerta.remove();
+    }, 5000)
+}
 
     const listadoProyectos = document.querySelector(".listado-proyectos");
 
