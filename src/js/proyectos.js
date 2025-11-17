@@ -1,5 +1,40 @@
 (function() {
 
+    const btnEditarNombre = document.querySelector('.editar-proyecto');
+    btnEditarNombre.addEventListener('click', function () {
+        mostrarFormulario();
+    });
+
+    function mostrarFormulario() {
+        const modal = document.createElement('DIV');
+        modal.classList.add('modal');
+        modal.innerHTML = `
+        <form class='formulario formulario-cambiar-nombre'>
+            <legend>Editar nombre</legend>
+            <div class='campo'>
+                <label>Nombre del proyecto</label>
+                <input 
+                    type='text' 
+                    id='nombre' 
+                    name='nombre' 
+                    placeholder= 'Renombrar proyecto'
+                />
+            </div>
+            <div class='opciones'>
+                <input type='submit' class='submit-nuevo-nombre' value='Guardar cambios'/>
+                <button type='button' class='cerrar-modal'>Cancelar</button>
+            </div>
+        </form>
+        `;
+        
+        setTimeout(() => {
+            const formulario = document.querySelector('.formulario');
+            formulario.classList.add('animar');
+        }, 0);
+
+        document.querySelector('body').appendChild(modal);
+    };
+
     const listadoProyectos = document.querySelector(".listado-proyectos");
 
     if(listadoProyectos) {

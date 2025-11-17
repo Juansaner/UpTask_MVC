@@ -38,7 +38,8 @@
             justify-content: space-between;
         }
 
-        .submit-nueva-tarea {
+        .submit-nueva-tarea,
+        .submit-nuevo-nombre {
             @include m.boton(v.$indigo, v.$blanco);
             border-radius: 1rem;
             @include m.tablet {
