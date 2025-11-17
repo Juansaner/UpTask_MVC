@@ -7,7 +7,7 @@
         <?php foreach($proyectos as $proyecto) { ?>
             <li class="proyecto">
                 <button type="button" class="btn eliminar-proyecto" id="eliminar-proyecto" data-proyecto-id="<?php echo $proyecto->url; ?>"><i class="fa-solid fa-trash"></i></button>
-                <button type="button" class="btn editar-proyecto" data-proyecto-id="<?php echo $proyecto->url; ?>">Editar</i></button>
+                <button type="button" class="btn editar-proyecto" data-proyecto-id="<?php echo $proyecto->url; ?>" data-proyecto-nombre="<?php echo $proyecto->proyecto; ?>">Editar</i></button>
                 <a href="/proyecto?id=<?php echo $proyecto->url; ?>">
                     <?php echo $proyecto->proyecto; ?>
                 </a>

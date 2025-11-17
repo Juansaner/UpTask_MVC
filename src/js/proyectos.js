@@ -1,11 +1,28 @@
 (function() {
 
-    const btnEditarNombre = document.querySelector('.editar-proyecto');
-    btnEditarNombre.addEventListener('click', function () {
-        mostrarFormulario();
-    });
+   const listadoProyectos = document.querySelector(".listado-proyectos");
 
-    function mostrarFormulario() {
+    if(listadoProyectos) {
+        listadoProyectos.addEventListener('click', (e) => {
+            const btnEliminarProyecto = e.target.closest('.eliminar-proyecto');
+
+            if(btnEliminarProyecto) {
+                const proyectoId = btnEliminarProyecto.dataset.proyectoId;
+                confirmarEliminarProyecto(proyectoId);
+                return;
+            }
+
+            const btnEditarProyecto = e.target.closest('.editar-proyecto');
+            if(btnEditarProyecto){
+                const proyectoNombre = btnEditarProyecto.dataset.proyectoNombre;
+                const proyectoId = btnEditarProyecto.dataset.proyectoId;
+                mostrarFormulario(proyectoNombre, proyectoId);
+                return;
+            }
+        })
+    }
+
+    function mostrarFormulario(proyectoNombre, proyectoId) {
         const modal = document.createElement('DIV');
         modal.classList.add('modal');
         modal.innerHTML = `
@@ -18,6 +35,7 @@
                     id='nombre' 
                     name='nombre' 
                     placeholder= 'Renombrar proyecto'
+                    value='${proyectoNombre}'
                 />
             </div>
             <div class='opciones'>
@@ -49,11 +67,39 @@
                     mostrarAlerta('El titulo es obligatorio', 'error', document.querySelector('.formulario-cambiar-nombre legend'));
                     return;
                 }
+
+                //Guarda el nuevo nombre en la variable
+                proyectoNombre = nombreProyecto;
+                actualizarProyecto(proyectoNombre, proyectoId);
             }
         });
 
-        document.querySelector('body').appendChild(modal);
+        document.querySelector('.dashboard').appendChild(modal);
     };
+
+    async function actualizarProyecto(proyectoNombre, proyectoId) {
+        const datos = new FormData;
+        datos.append('proyecto', proyectoNombre);
+        datos.append('id', proyectoId);
+        
+        try {
+            const url = `${location.origin}/api/proyecto/actualizar_proyecto`;
+            const respuesta = await fetch(url, {
+                method: 'POST',
+                body: datos
+            });
+            const resultado = await respuesta.json();
+
+            if(resultado.respuesta.tipo === 'exito') {
+                Swal.fire('Actualizado', resultado.respuesta.mensaje, 'success');
+                setTimeout(() => {
+                    window.location.replace(`${location.origin}/dashboard`);
+                }, 1500);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     function mostrarAlerta(mensaje, tipo, referencia) {
     //Previene la creacion de multiples alertas
@@ -74,19 +120,7 @@
     }, 5000)
 }
 
-    const listadoProyectos = document.querySelector(".listado-proyectos");
-
-    if(listadoProyectos) {
-        listadoProyectos.addEventListener('click', (e) => {
-            const btnEliminarProyecto = e.target.closest('.eliminar-proyecto');
-
-            if(btnEliminarProyecto) {
-                const proyectoId = btnEliminarProyecto.dataset.proyectoId;
-                confirmarEliminarProyecto(proyectoId);
-            }
-
-        })
-    }
+    
 
     function confirmarEliminarProyecto(proyectoId) {
         Swal.fire({
@@ -107,9 +141,6 @@
 async function eliminarProyecto(proyectoId) {
         const datos = new FormData();
         datos.append('id', proyectoId);
-
-        console.log('ID que estamos enviando:', proyectoId);
-    console.log('FormData:', datos.get('id'));
 
         try {
             const url = `${location.origin}/api/proyecto/eliminar_proyecto`;

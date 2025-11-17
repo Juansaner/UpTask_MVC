@@ -64,6 +64,36 @@ class DashboardController {
         ]);
     }
 
+    public static function actualizar_proyecto() {
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            session_start();
+
+            //Verificar que el proyecto exista
+            $proyecto = Proyecto::where('url', $_POST['id']);
+            if(!$proyecto || $proyecto->propietarioId !== $_SESSION['id']) {
+                $respuesta = [
+                    'tipo' => 'error',
+                    'mensaje' => 'Hubo un error al actualizar el nombre del proyecto'
+                ];
+                echo json_encode($respuesta);
+                return;
+            }
+            
+            //Toma el nuevo nombre del proyecto
+            $proyecto->proyecto = $_POST['proyecto'];
+            $resultado = $proyecto->guardar();
+
+            if($resultado) {
+                $respuesta = [
+                    'tipo' => 'exito',
+                    'mensaje' => 'El nombre del proyecto ha sido actualizado exitosamente'
+                ];
+            }
+            
+            echo json_encode(['respuesta' => $respuesta]);
+        }
+    }
+
     public static function eliminar_proyecto() {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
