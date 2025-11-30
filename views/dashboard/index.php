@@ -6,8 +6,10 @@
     <ul class='listado-proyectos'>
         <?php foreach($proyectos as $proyecto) { ?>
             <li class="proyecto">
-                <button type="button" class="btn eliminar-proyecto" id="eliminar-proyecto" data-proyecto-id="<?php echo $proyecto->url; ?>"><i class="fa-solid fa-trash"></i></button>
-                <button type="button" class="btn editar-proyecto" data-proyecto-id="<?php echo $proyecto->url; ?>" data-proyecto-nombre="<?php echo $proyecto->proyecto; ?>">Editar</i></button>
+                <div class="btn-acciones">
+                    <button type="button" class="btn eliminar-proyecto" id="eliminar-proyecto" data-proyecto-id="<?php echo $proyecto->url; ?>"><i class="fa-regular fa-trash-can"></i> Eliminar</button>
+                    <button type="button" class="btn editar-proyecto" data-proyecto-id="<?php echo $proyecto->url; ?>" data-proyecto-nombre="<?php echo $proyecto->proyecto; ?>"><i class="fa-regular fa-pen-to-square"></i> Editar</button>
+                </div>
                 <a href="/proyecto?id=<?php echo $proyecto->url; ?>">
                     <?php echo $proyecto->proyecto; ?>
                 </a>

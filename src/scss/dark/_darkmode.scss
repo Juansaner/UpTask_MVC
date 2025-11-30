@@ -94,9 +94,32 @@
     }
 
     .listado-proyectos .proyecto {
-        background-color: lighten($grisOscuro, 20%);
+        background-color: lighten($grisOscuro, 10%);
+        box-shadow: none;
+        border: solid 1px lighten(v.$grisOscuro, 10%);
         &:hover {
-            background-color: lighten($grisOscuro, 15%);
+            background-color: lighten($grisOscuro, 5%);
+            border: solid 1px lighten(v.$grisOscuro, 4%);
+            box-shadow: none;
+        }
+
+        a{
+            color: v.$blanco;
+        }
+
+        .btn-acciones {
+            .editar-proyecto {
+                    color: v.$grisClaro;
+                    border: solid 1px lighten(v.$grisOscuro, 10%);
+    
+                    &:hover {
+                        background-color: lighten($grisOscuro, 5%);
+                        border: solid 1px v.$naranja;
+                        color: v.$naranja;
+                        transition: all .5s ease-in-out;
+                        cursor: pointer;
+                    }
+            }
         }
     }
 
