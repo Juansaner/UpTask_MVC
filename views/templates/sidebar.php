@@ -6,9 +6,9 @@
         </div>
     </div>
     <nav class="sidebar-nav">
-        <a class="<?php echo ($titulo === 'Proyectos') ? 'activo' : '';?>" href="/dashboard">Proyectos</a>
-        <a class="<?php echo ($titulo === 'Crear proyecto') ? 'activo' : '';?>" href="/crear-proyecto">Crear proyecto</a>
-        <a class="<?php echo ($titulo === 'Perfil') ? 'activo' : '';?>" href="/perfil">Perfil</a>
+        <a class="<?php echo ($titulo === 'Proyectos') ? 'activo' : '';?>" href="/dashboard"><i class="fa-regular fa-folder-open"></i> Proyectos</a>
+        <a class="<?php echo ($titulo === 'Crear proyecto') ? 'activo' : '';?>" href="/crear-proyecto"><i class="fa-solid fa-plus"></i> Crear proyecto</a>
+        <a class="<?php echo ($titulo === 'Perfil') ? 'activo' : '';?>" href="/perfil"><i class="fa-regular fa-user"></i> Perfil</a>
     </nav>
 
     <div class="cerrar-sesion-mobile">
