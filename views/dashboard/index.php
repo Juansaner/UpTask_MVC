@@ -1,4 +1,6 @@
 <?php include_once __DIR__ . '/header_dashboard.php'; ?>
+<p class="descripcion">Gestiona todos tus proyectos</p>
+
 <?php if(count($proyectos) === 0) { ?>
     <p class="no-proyecto">No hay proyectos para mostrar <a href="/crear-proyecto">Comienza creando uno</a></p>
 <?php } else {  ?>
