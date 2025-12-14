@@ -1,6 +1,38 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
+.contenedor-volver {
+    display: none; // Oculto por defecto (mobile)
+    
+    width: max-content;
+    margin: 2rem;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    color: v.$gris;
+    transition: all .5s ease-in-out;
+
+    .btn-volver {
+        margin: 2rem 2rem 2rem 1rem;
+        color: inherit;
+
+        &:hover {
+            color: v.$blanco;
+        }
+    }
+
+    &:hover {
+        background-color: v.$naranja;
+        color: v.$blanco;
+    }
+
+    // Se muestra solo en tablets y desktop
+    @media (min-width: 768px) {
+        display: block;
+    }
+}
+
+
+
 .contenedor-nueva-tarea {
     display: flex;
     justify-content: center;
