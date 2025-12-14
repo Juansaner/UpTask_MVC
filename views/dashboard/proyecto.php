@@ -1,7 +1,7 @@
 <?php include_once __DIR__ . '/header_dashboard.php'; ?>
 <div class="contenedor-sm">
     <div class="contenedor-nueva-tarea">
-        <button type="button" class="nueva-tarea" id="nueva-tarea">Nueva tarea</button>
+        <button type="button" class="nueva-tarea" id="nueva-tarea"> <i class="fa-solid fa-plus"></i> Nueva tarea</button>
     </div>
 
     <div id="filtros" class="filtros">

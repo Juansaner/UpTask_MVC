@@ -6,6 +6,7 @@
     justify-content: center;
     .nueva-tarea {
         @include m.boton(v.$cyan, v.$blanco);
+        border-radius: .5rem;
         @include m.tablet {
             width: auto;
         }
